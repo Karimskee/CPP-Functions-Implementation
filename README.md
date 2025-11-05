@@ -1,2 +1,2 @@
-# CPP-std-Library-Functions-Reimplementation
-My own implementation of some C++ standard library functions, with the main goal of learning and potential performance improvement.
+# CPP-Functions-Implementation
+My own implementation of some C++ functions, whether they are C++ built-in, inspired from other languages or just for the sole purpose of "why not have them". with the aim of learning and potentially extending built-in functions functionality and performance.
