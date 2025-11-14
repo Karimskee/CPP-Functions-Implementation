@@ -18,10 +18,7 @@ using ld = long double;
 void space(ll n);   // Print n blank lines (for better program interface purpose)
 void clear();   // Clears terminal
 string color(const string& hex);   // ANSI terminal color set
-int minim_element(vector <int> vec);
-ll minim_element(vector <ll> vec);
-char minim_element(vector <char> vec);
-string minim_element(vector <string> vec);
+ll bulk_operation(vector <ll> vec, char op = '+');
 
 /****************************************************************************************/
 /*        ██╗  ██╗ █████╗ ██████╗ ██╗███╗   ███╗███████╗██╗  ██╗███████╗███████╗        */
@@ -44,23 +41,12 @@ int main()
     space(100);
 
 
-    vector <int> vec0 = {1, 2, 3, -5, -1000, 10, 20};
-    vector <ll> vec1 = {1, 2, 3, -5, -1000, 10, 20};
-    vector <char> vec2 = {'a', 'C', '0', '?'};
-    vector <string> vec3 = {"hehe", "hoho", "qjetlt"};
-    vector <int> vec4 = {};
-    vector <ll> vec5 = {};
-    vector <char> vec6 = {};
-    vector <string> vec7 = {};
-
-    cout << minim_element(vec0) << endl;
-    cout << minim_element(vec1) << endl;
-    cout << minim_element(vec2) << endl;
-    cout << minim_element(vec3) << endl;
-    cout << minim_element(vec4) << endl;
-    cout << minim_element(vec5) << endl;
-    cout << minim_element(vec6) << endl;
-    cout << minim_element(vec7) << endl;
+    cout << bulk_operation({0, 1, 2, 3}, '+') << endl;
+    cout << bulk_operation({1, 2, 3}, '-') << endl;
+    cout << bulk_operation({0, 1, 2, 3}, '-') << endl;
+    cout << bulk_operation({0, 1, 2, 3}, '*') << endl;
+    cout << bulk_operation({1, 2, 3}, '*') << endl;
+    cout << bulk_operation({}, '*') << endl;
 
 
     cout << resetColor;
@@ -104,74 +90,41 @@ string color(const string& hex)
     return ansi.str();
 }
 
-int minim_element(vector <int> vec)
+ll bulk_operation(vector <ll> vec, char op)
 {
-    int minim;
-    
-    if (vec.size())
-        minim = vec[0];
-    else
-        minim = INT_MIN;
+    ll result = 0;
 
-    for (auto it : vec)
+    if (!vec.size())
     {
-        if (it < minim)
-            minim = it;
+        cerr << "Vector is empty.\n";
+        return -1;
     }
 
-    return minim;
-}
-
-ll minim_element(vector <ll> vec)
-{
-    ll minim;
-    
-    if (vec.size())
-        minim = vec[0];
-    else
-        minim = LLONG_MIN;
-
-    for (auto it : vec)
+    if (op == '+')
     {
-        if (it < minim)
-            minim = it;
+        for (auto it : vec)
+            result += it;
+    }
+    else if (op == '-')
+    {
+        result = *vec.begin();
+        vec.erase(vec.begin());
+        
+        for (auto it : vec)
+            result -= it;
+    }
+    else if (op == '*')
+    {
+        result = 1;
+
+        for (auto it : vec)
+            result *= it;
+    }
+    else
+    {
+        cerr << "Unsupported operation.\n";
+        return -1;
     }
 
-    return minim;
-}
-
-char minim_element(vector <char> vec)
-{
-    char minim;
-    
-    if (vec.size())
-        minim = vec[0];
-    else
-        minim = 0;
-
-    for (auto it : vec)
-    {
-        if (it < minim)
-            minim = it;
-    }
-
-    return minim;
-}
-
-string minim_element(vector <string> vec)
-{
-    string minim;
-    
-    if (vec.size())
-        minim = vec[0];
-    else
-        minim = "";
-
-    for (auto it : vec)
-    {
-        if (it < minim)
-            minim = it;
-    }
-
-    return minim;
+    return result;
 }

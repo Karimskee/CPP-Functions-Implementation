@@ -18,10 +18,10 @@ using ld = long double;
 void space(ll n);   // Print n blank lines (for better program interface purpose)
 void clear();   // Clears terminal
 string color(const string& hex);   // ANSI terminal color set
-int minim_element(vector <int> vec);
-ll minim_element(vector <ll> vec);
-char minim_element(vector <char> vec);
-string minim_element(vector <string> vec);
+int maxim_element(vector <int> vec);
+ll maxim_element(vector <ll> vec);
+char maxim_element(vector <char> vec);
+string maxim_element(vector <string> vec);
 
 /****************************************************************************************/
 /*        ██╗  ██╗ █████╗ ██████╗ ██╗███╗   ███╗███████╗██╗  ██╗███████╗███████╗        */
@@ -53,14 +53,14 @@ int main()
     vector <char> vec6 = {};
     vector <string> vec7 = {};
 
-    cout << minim_element(vec0) << endl;
-    cout << minim_element(vec1) << endl;
-    cout << minim_element(vec2) << endl;
-    cout << minim_element(vec3) << endl;
-    cout << minim_element(vec4) << endl;
-    cout << minim_element(vec5) << endl;
-    cout << minim_element(vec6) << endl;
-    cout << minim_element(vec7) << endl;
+    cout << maxim_element(vec0) << endl;
+    cout << maxim_element(vec1) << endl;
+    cout << maxim_element(vec2) << endl;
+    cout << maxim_element(vec3) << endl;
+    cout << maxim_element(vec4) << endl;
+    cout << maxim_element(vec5) << endl;
+    cout << maxim_element(vec6) << endl;
+    cout << maxim_element(vec7) << endl;
 
 
     cout << resetColor;
@@ -104,74 +104,74 @@ string color(const string& hex)
     return ansi.str();
 }
 
-int minim_element(vector <int> vec)
+int maxim_element(vector <int> vec)
 {
-    int minim;
+    int maxim;
     
     if (vec.size())
-        minim = vec[0];
+        maxim = vec[0];
     else
-        minim = INT_MIN;
+        maxim = INT_MAX;
 
     for (auto it : vec)
     {
-        if (it < minim)
-            minim = it;
+        if (it>maxim)
+            maxim = it;
     }
 
-    return minim;
+    return maxim;
 }
 
-ll minim_element(vector <ll> vec)
+ll maxim_element(vector <ll> vec)
 {
-    ll minim;
+    ll maxim;
     
     if (vec.size())
-        minim = vec[0];
+        maxim = vec[0];
     else
-        minim = LLONG_MIN;
+        maxim = LLONG_MAX;
 
     for (auto it : vec)
     {
-        if (it < minim)
-            minim = it;
+        if (it>maxim)
+            maxim = it;
     }
 
-    return minim;
+    return maxim;
 }
 
-char minim_element(vector <char> vec)
+char maxim_element(vector <char> vec)
 {
-    char minim;
+    char maxim;
     
     if (vec.size())
-        minim = vec[0];
+        maxim = vec[0];
     else
-        minim = 0;
+        maxim = 0;
 
     for (auto it : vec)
     {
-        if (it < minim)
-            minim = it;
+        if (it>maxim)
+            maxim = it;
     }
 
-    return minim;
+    return maxim;
 }
 
-string minim_element(vector <string> vec)
+string maxim_element(vector <string> vec)
 {
-    string minim;
+    string maxim;
     
     if (vec.size())
-        minim = vec[0];
+        maxim = vec[0];
     else
-        minim = "";
+        maxim = "";
 
     for (auto it : vec)
     {
-        if (it < minim)
-            minim = it;
+        if (it>maxim)
+            maxim = it;
     }
 
-    return minim;
+    return maxim;
 }
