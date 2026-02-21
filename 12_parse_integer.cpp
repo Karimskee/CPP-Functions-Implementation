@@ -18,6 +18,7 @@ using ld = long double;
 void space(ll n);   // Print n blank lines (for better program interface purpose)
 void clear();   // Clears terminal
 string color(const string& hex);   // ANSI terminal color set
+string parse_string(string s);
 
 /****************************************************************************************/
 /*        ██╗  ██╗ █████╗ ██████╗ ██╗███╗   ███╗███████╗██╗  ██╗███████╗███████╗        */
@@ -40,31 +41,9 @@ int main()
     space(100);
 
 
-    string s;
-    cin >> s;
-
-    string integerString = "";
-    for (auto it : s) {
-        if (it >= '0' && it <= '9')
-            integerString += it;
-    }
-
-    string maximum = to_string(ULLONG_MAX);
-    
-    if (
-        integerString.size() > maximum.size() ||
-        (integerString.size() == maximum.size() && integerString.back() > maximum.back())
-    ) {
-        cout << "Overflow has occured." << endl;
-        cout << "The integer as a string:" << endl;
-        cout << integerString << endl;
-    }
-    else {
-        ull integer = stoull(integerString);
-        cout << integer << endl;
-    }
-
-    space(1);
+    cout << parse_string("1231gn5428mf1f") << endl;
+    cout << parse_string("123ahaha") << endl;
+    cout << parse_string("123Elzero123i1868341257239423mgtj345o9u432-=") << endl;
 
 
     cout << resetColor;
@@ -106,4 +85,14 @@ string color(const string& hex)
     ostringstream ansi;
     ansi << "\033[38;2;" << r << ";" << g << ";" << b << "m";
     return ansi.str();
+}
+
+string parse_string(string s) {
+string integerString = "";
+    for (auto it : s) {
+        if (it >= '0' && it <= '9')
+            integerString += it;
+    }
+
+    return integerString;
 }

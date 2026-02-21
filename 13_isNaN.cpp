@@ -41,13 +41,8 @@ int main()
     space(100);
 
 
-    string s; 
-    cin >> s;
-
-    if (isNaN(s))
-        cout << s << " is not a number" << endl;
-    else
-        cout << s << " is a number" << endl;
+    cout << isNaN("1234G5") << endl;
+    cout << isNaN("1234") << endl;
 
 
     cout << resetColor;

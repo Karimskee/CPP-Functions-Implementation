@@ -18,7 +18,7 @@ using ld = long double;
 void space(ll n);   // Print n blank lines (for better program interface purpose)
 void clear();   // Clears terminal
 string color(const string& hex);   // ANSI terminal color set
-string trimString(string s, char c = ' ', string op = "All");
+string trim_string(string s, char c = ' ', string op = "All");
 
 /****************************************************************************************/
 /*        ██╗  ██╗ █████╗ ██████╗ ██╗███╗   ███╗███████╗██╗  ██╗███████╗███████╗        */
@@ -41,14 +41,14 @@ int main()
     space(100);
 
 
-    cout << trimString("Test") << endl;
-    cout << trimString("Test  ") << endl;
-    cout << trimString("   Test    ") << endl;
-    cout << trimString(trimString("Test", 't'), 'T') << endl;
-    cout << trimString("###Test!!", '#') << endl;
-    cout << trimString("###Test", '#', "Right") << endl;
-    cout << trimString("Test###", '#', "Right") << endl;
-    cout << trimString("###Test###", '#') << endl;
+    cout << trim_string("Test") << endl;
+    cout << trim_string("Test  ") << endl;
+    cout << trim_string("   Test    ") << endl;
+    cout << trim_string(trim_string("Test", 't'), 'T') << endl;
+    cout << trim_string("###Test!!", '#') << endl;
+    cout << trim_string("###Test", '#', "Right") << endl;
+    cout << trim_string("Test###", '#', "Right") << endl;
+    cout << trim_string("###Test###", '#') << endl;
 
 
     cout << resetColor;
@@ -92,7 +92,7 @@ string color(const string& hex)
     return ansi.str();
 }
 
-string trimString(string s, char c, string op) {
+string trim_string(string s, char c, string op) {
     if (op == "All") {
         while (s.front() == c)
             s.erase(s.begin(), s.begin() + 1);
@@ -107,9 +107,6 @@ string trimString(string s, char c, string op) {
     else if (op == "Right") {
         while (s.back() == c)
             s.pop_back();
-    }
-    else {
-        cout << "Invalid operator.";
     }
 
     return s;

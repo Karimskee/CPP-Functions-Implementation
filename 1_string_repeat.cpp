@@ -83,6 +83,8 @@ string color(const string& hex)
     ostringstream ansi;
     ansi << "\033[38;2;" << r << ";" << g << ";" << b << "m";
     return ansi.str();
+
+    
 }
 
 string string_repeat(string s, ll n = 2)
